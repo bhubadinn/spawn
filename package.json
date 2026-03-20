@@ -1,0 +1,53 @@
+{
+  "name": "spawn-cli",
+  "version": "0.1.0",
+  "description": "Spawn collaborative Claude Code agent teams in tmux",
+  "type": "module",
+  "license": "MIT",
+  "author": "Phoobadin Woorakhan <phoobadin.wrk.2200@gmail.com>",
+  "homepage": "https://github.com/bhubadinn/spawn#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bhubadinn/spawn.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bhubadinn/spawn/issues"
+  },
+  "keywords": [
+    "claude",
+    "claude-code",
+    "ai-agents",
+    "tmux",
+    "multi-agent",
+    "collaboration",
+    "cli"
+  ],
+  "bin": {
+    "spawn": "./bin/spawn.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "templates/",
+    "tsconfig.json"
+  ],
+  "scripts": {
+    "dev": "tsx bin/spawn.ts",
+    "build": "tsc",
+    "start": "node dist/bin/spawn.js",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "commander": "^13.1.0",
+    "yaml": "^2.7.0",
+    "chalk": "^5.4.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "@types/node": "^22.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
