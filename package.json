@@ -1,5 +1,5 @@
 {
-  "name": "spawn-cli",
+  "name": "spawn-team",
   "version": "0.1.0",
   "description": "Spawn collaborative Claude Code agent teams in tmux",
   "type": "module",
@@ -23,29 +23,29 @@
     "cli"
   ],
   "bin": {
-    "spawn": "./bin/spawn.js"
+    "spawn": "./dist/bin/spawn.js"
   },
   "files": [
-    "bin/",
-    "src/",
-    "templates/",
-    "tsconfig.json"
+    "dist/",
+    "templates/"
   ],
   "scripts": {
     "dev": "tsx bin/spawn.ts",
-    "build": "tsc",
+    "build": "tsup",
     "start": "node dist/bin/spawn.js",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit --allowImportingTsExtensions",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "chalk": "^5.4.1",
     "commander": "^13.1.0",
-    "yaml": "^2.7.0",
-    "chalk": "^5.4.1"
+    "yaml": "^2.7.0"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.5.1",
     "tsx": "^4.19.0",
-    "typescript": "^5.7.0",
-    "@types/node": "^22.0.0"
+    "typescript": "^5.7.0"
   },
   "engines": {
     "node": ">=20.0.0"

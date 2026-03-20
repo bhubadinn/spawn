@@ -2,9 +2,9 @@
 
 Spawn collaborative Claude Code agent teams in tmux.
 
-[![npm version](https://img.shields.io/npm/v/spawn-cli.svg)](https://www.npmjs.com/package/spawn-cli)
-[![license](https://img.shields.io/npm/l/spawn-cli.svg)](https://github.com/bhubadinn/spawn/blob/main/LICENSE)
-[![node](https://img.shields.io/node/v/spawn-cli.svg)](https://nodejs.org)
+[![npm version](https://img.shields.io/npm/v/spawn-team.svg)](https://www.npmjs.com/package/spawn-team)
+[![license](https://img.shields.io/npm/l/spawn-team.svg)](https://github.com/bhubadinn/spawn/blob/main/LICENSE)
+[![node](https://img.shields.io/node/v/spawn-team.svg)](https://nodejs.org)
 
 Define a team of Claude Code agents in YAML, and `spawn` launches them in tmux panes with a shared workspace for file-based collaboration.
 
@@ -29,7 +29,7 @@ Define a team of Claude Code agents in YAML, and `spawn` launches them in tmux p
 ## Quick Start
 
 ```bash
-npm install -g spawn-cli
+npm install -g spawn-team
 
 # Generate a starter team.yaml
 spawn init
