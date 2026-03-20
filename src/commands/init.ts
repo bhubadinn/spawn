@@ -1,6 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { log } from "../utils/logger.ts";
+import { runInitWizard } from "../wizard/index.ts";
 
 const TEMPLATE = `name: my-team
 description: "Describe the team mission here"
@@ -48,7 +49,26 @@ agents:
       Create new tasks if you find issues.
 `;
 
-export async function init(): Promise<void> {
+interface InitOptions {
+  yes?: boolean;
+}
+
+export async function init(opts: InitOptions): Promise<void> {
+  // Interactive wizard unless -y/--yes flag
+  if (!opts.yes) {
+    try {
+      await runInitWizard();
+    } catch (err: unknown) {
+      if (err != null && typeof err === "object" && "name" in err && (err as { name: string }).name === "ExitPromptError") {
+        log.dim("Aborted.");
+        return;
+      }
+      throw err;
+    }
+    return;
+  }
+
+  // Static template mode (-y)
   const dest = path.resolve("team.yaml");
   try {
     await fs.access(dest);

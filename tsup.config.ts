@@ -8,7 +8,7 @@ export default defineConfig({
   platform: "node",
   splitting: false,
   bundle: true,
-  external: ["commander", "yaml", "chalk"],
+  external: ["commander", "yaml", "chalk", "@inquirer/prompts"],
   onSuccess: async () => {
     const fs = await import("fs");
     const file = "dist/bin/spawn.js";

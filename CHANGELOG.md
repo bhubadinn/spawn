@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - 2026-03-20
+
+### Added
+- Interactive CLI wizard for `spawn init` — step-by-step team setup (name, model, permissions, budget, agents with `$EDITOR` for instructions)
+- Interactive fallback for `spawn up` when no flags or team.yaml — choose YAML, quick mode, or run init wizard
+- `spawn init -y` / `--yes` flag to skip wizard and use static template (backward compat)
+- `@inquirer/prompts` dependency for interactive prompts
+
 ## [0.1.0] - 2026-03-20
 
 ### Added
@@ -24,5 +32,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Support for team YAML configuration with per-agent roles, instructions, model, and budget
 - Quick mode: `spawn up -n 4` generates a lead + N-1 workers automatically
 
-[Unreleased]: https://github.com/bhubadinn/spawn/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/bhubadinn/spawn/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/bhubadinn/spawn/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/bhubadinn/spawn/releases/tag/v0.1.0

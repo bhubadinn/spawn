@@ -13,7 +13,7 @@ export function createCli(): Command {
   program
     .name("spawn")
     .description("Spawn collaborative Claude Code agent teams in tmux")
-    .version("0.1.0");
+    .version("0.2.0");
 
   program
     .command("up")
@@ -63,6 +63,7 @@ export function createCli(): Command {
   program
     .command("init")
     .description("Generate a starter team.yaml")
+    .option("-y, --yes", "Skip wizard, use static template")
     .action(init);
 
   return program;

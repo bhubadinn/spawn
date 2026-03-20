@@ -1,6 +1,6 @@
 {
   "name": "spawn-team",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Spawn collaborative Claude Code agent teams in tmux",
   "type": "module",
   "license": "MIT",
@@ -39,6 +39,7 @@
     "prepublishOnly": "npm run build"
   },
   "dependencies": {
+    "@inquirer/prompts": "^8.3.2",
     "chalk": "^5.4.1",
     "commander": "^13.1.0",
     "yaml": "^2.7.0"

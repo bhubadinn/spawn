@@ -38,10 +38,40 @@ export async function up(opts: UpOptions): Promise<void> {
       config = await teamConfig.load(path.resolve("team.yaml"));
       log.info("Loaded team.yaml from current directory");
     } catch {
-      log.error("No --team file or --agents count specified, and no team.yaml found.");
-      log.dim("  Usage: spawn up --team team.yaml");
-      log.dim("  Usage: spawn up --agents 3 --task 'Build a REST API'");
-      process.exit(1);
+      // No team.yaml found — try interactive wizard if TTY
+      if (process.stdin.isTTY) {
+        try {
+          const { runUpWizard } = await import("../wizard/index.ts");
+          const result = await runUpWizard();
+          if (!result) {
+            log.dim("Aborted.");
+            return;
+          }
+          if (result.mode === "yaml" && result.teamFile) {
+            config = await teamConfig.load(result.teamFile);
+            log.info(`Loaded ${result.teamFile}`);
+          } else if (result.mode === "quick") {
+            config = teamConfig.generate(
+              result.agents ?? 3,
+              result.task,
+              result.model,
+            );
+          } else {
+            return;
+          }
+        } catch (err: unknown) {
+          if (err != null && typeof err === "object" && "name" in err && (err as { name: string }).name === "ExitPromptError") {
+            log.dim("Aborted.");
+            return;
+          }
+          throw err;
+        }
+      } else {
+        log.error("No --team file or --agents count specified, and no team.yaml found.");
+        log.dim("  Usage: spawn up --team team.yaml");
+        log.dim("  Usage: spawn up --agents 3 --task 'Build a REST API'");
+        process.exit(1);
+      }
     }
   }
 

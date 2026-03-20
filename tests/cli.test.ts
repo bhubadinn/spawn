@@ -25,6 +25,15 @@ describe("cli", () => {
     expect(flags).toContain("--detach");
   });
 
+  it("init command has -y/--yes option", () => {
+    const cli = createCli();
+    const initCmd = cli.commands.find((c) => c.name() === "init")!;
+    const flags = initCmd.options.map((o) => o.long);
+    expect(flags).toContain("--yes");
+    const short = initCmd.options.map((o) => o.short);
+    expect(short).toContain("-y");
+  });
+
   it("parses args correctly", async () => {
     const cli = createCli();
     cli.exitOverride();
