@@ -1,6 +1,6 @@
 {
   "name": "spawn-team",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Spawn collaborative Claude Code agent teams in tmux",
   "type": "module",
   "license": "MIT",
