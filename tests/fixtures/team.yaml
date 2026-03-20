@@ -1,0 +1,15 @@
+name: test-team
+description: "A test team for unit tests"
+settings:
+  model: sonnet
+  permissions: accept-edits
+  shared_context: []
+agents:
+  - name: lead
+    role: orchestrator
+    instructions: |
+      You are the lead. Read {workspace}/board.md.
+  - name: worker-1
+    role: implementer
+    instructions: |
+      You are worker-1. Check {workspace}/tasks/ for work.

@@ -22,6 +22,7 @@ export function createCli(): Command {
     .option("-n, --agents <count>", "Quick mode: spawn N agents", parseInt)
     .option("--task <description>", "Task for quick mode")
     .option("-d, --dir <path>", "Working directory for agents")
+    .option("-c, --create-dir <name>", "Create a new project directory and spawn there")
     .option("-m, --model <model>", "Override model for all agents")
     .option("--budget <usd>", "Max budget per agent in USD", parseFloat)
     .option("--detach", "Don't attach to tmux after creation")

@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import path from "node:path";
 import * as tmux from "../core/tmux.ts";
 import * as workspace from "../core/workspace.ts";
@@ -14,6 +15,7 @@ interface UpOptions {
   agents?: number;
   task?: string;
   dir?: string;
+  createDir?: string;
   model?: string;
   budget?: number;
   detach?: boolean;
@@ -48,7 +50,15 @@ export async function up(opts: UpOptions): Promise<void> {
   if (opts.budget) config.settings.budget_per_agent = opts.budget;
 
   const sessionName = tmuxSessionName(config.name);
-  const projectDir = path.resolve(opts.dir ?? config.dir ?? ".");
+
+  // Create project directory if --create-dir specified
+  if (opts.createDir) {
+    const dir = path.resolve(opts.createDir);
+    fs.mkdirSync(dir, { recursive: true });
+    log.ok(`Created project directory: ${dir}`);
+  }
+
+  const projectDir = path.resolve(opts.createDir ?? opts.dir ?? config.dir ?? ".");
 
   // 2. Check prerequisites
   if (await tmux.hasSession(sessionName)) {
