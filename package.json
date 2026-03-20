@@ -4,7 +4,7 @@
   "description": "Spawn collaborative Claude Code agent teams in tmux",
   "type": "module",
   "license": "MIT",
-  "author": "Phoobadin Woorakhan <phoobadin.wrk.2200@gmail.com>",
+  "author": "bhubadinn",
   "homepage": "https://github.com/bhubadinn/spawn#readme",
   "repository": {
     "type": "git",
