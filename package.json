@@ -23,7 +23,7 @@
     "cli"
   ],
   "bin": {
-    "spawn": "./dist/bin/spawn.js"
+    "spawn": "dist/bin/spawn.js"
   },
   "files": [
     "dist/",
